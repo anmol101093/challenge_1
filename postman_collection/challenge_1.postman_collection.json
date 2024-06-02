@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "0b7a9a55-437b-4d65-81cb-bc80cf820274",
+		"name": "challenge_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "App Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/challenge_1/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"challenge_1",
+						"health"
+					]
+				},
+				"description": "Check Application Health."
+			},
+			"response": []
+		},
+		{
+			"name": "upload_images",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/challenge_1/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"challenge_1",
+						"upload"
+					]
+				},
+				"description": "Select the image file to upload it to the Minio s3 bucket to persistently store it."
+			},
+			"response": []
+		},
+		{
+			"name": "list circular objects",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image_name\": \"4bc07dea-9e08-4802-99ae-fbcec55d410b_jpg.rf.fca64189ac38d4a1265341caf4d98e7f.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/challenge_1/list_objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"challenge_1",
+						"list_objects"
+					],
+					"query": [
+						{
+							"key": "image_name",
+							"value": "\"4bc07dea-9e08-4802-99ae-fbcec55d410b_jpg.rf.fca64189ac38d4a1265341caf4d98e7f.jpg\"",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Provide the name of the image file uploaded to the Bucket using \" /upload \" API."
+			},
+			"response": []
+		},
+		{
+			"name": "get object details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"object_id\": 274\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/challenge_1/get_object_details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"challenge_1",
+						"get_object_details"
+					]
+				},
+				"description": "Provide the id to get the Bounding box, radius & centroid of a circular object"
+			},
+			"response": []
+		},
+		{
+			"name": "mask image",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image_name\": \"5b887c9d-79d6-4701-97b8-caccf7edd605_jpg.rf.1893fa59b5ab32d51b5857ed6dfd8da5.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/challenge_1/mask_image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"challenge_1",
+						"mask_image"
+					]
+				},
+				"description": "provide the name of the image that was uploaded & This API will output the original & masked Image ."
+			},
+			"response": []
+		}
+	]
+}
